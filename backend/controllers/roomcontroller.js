@@ -16,19 +16,19 @@ exports.createRoom = catchAsyncErrors(async (req, res, next) => {
 
 // Get all rooms
 exports.getAllRooms = catchAsyncErrors(async (req, res) => {
-  const resultsPerPage = 12;
-  const roomCount = await Room.countDocuments();
+  const resultPerPage = 12;
+  const roomsCount = await Room.countDocuments();
   const apiFeature = new ApiFeatures(Room.find(), req.query)
     .search()
     .filter()
-    .pagination(resultsPerPage);
+    .pagination(resultPerPage);
   const rooms = await apiFeature.query;
 
   res.status(200).json({
     success: true,
     rooms,
-    roomCount,
-    resultsPerPage,
+    roomsCount,
+    resultPerPage,
   });
 });
 
