@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import ReactStars from "react-rating-stars-component";
 
-const Room = ({ room }) => {
+const RoomCard = ({ room }) => {
   const options = {
     edit: false,
     color: "rgba(20,20,20,0.1)",
@@ -12,7 +12,7 @@ const Room = ({ room }) => {
     isHalf: true,
   };
   return (
-    <Link className="roomCard" to={room._id}>
+    <Link className="roomCard" to={`/product/${room._id}`}>
       <img src={room.images[0].url} alt={room.name} />
       <p>{room.name}</p>
       <div>
@@ -23,4 +23,4 @@ const Room = ({ room }) => {
   );
 };
 
-export default Room;
+export default RoomCard;

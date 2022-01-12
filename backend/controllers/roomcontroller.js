@@ -5,8 +5,7 @@ const ApiFeatures = require("../utils/apiFeatures");
 
 // Create room
 exports.createRoom = catchAsyncErrors(async (req, res, next) => {
-  
-  req.body.user = req.user.id
+  req.body.user = req.user.id;
 
   const room = await Room.create(req.body);
 

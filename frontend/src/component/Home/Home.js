@@ -1,8 +1,8 @@
 import React, { Fragment, useEffect } from "react";
 import "./Home.css";
-import Room from "./Room.js";
+import Room from "./RoomCard.js";
 import MetaData from "../layout/MetaData.js";
-import { getRoom } from "../../actions/roomAction.js";
+import { getRoom, clearErrors } from "../../actions/roomAction.js";
 import { useSelector, useDispatch } from "react-redux";
 import Loader from "../layout/Loader/Loader";
 import { useAlert } from "react-alert";
@@ -16,10 +16,11 @@ const Home = () => {
 
   useEffect(() => {
     if (error) {
-      return alert.error(error);
+      alert.error(error);
+      dispatch(clearErrors());
     }
     dispatch(getRoom());
-  }, [dispatch, error]);
+  }, [dispatch, error, alert]);
 
   return (
     <Fragment>

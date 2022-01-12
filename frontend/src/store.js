@@ -1,10 +1,11 @@
 import { createStore, combineReducers, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
-import { roomReducer } from "./reducers/roomReducer";
+import { roomDetailsReducer, roomReducer } from "./reducers/roomReducer";
 
 const reducer = combineReducers({
   rooms: roomReducer,
+  roomDetails: roomDetailsReducer,
 });
 
 let initialState = {};
