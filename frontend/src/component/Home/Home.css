@@ -14,6 +14,14 @@ body {
   color: black;
 }
 
+.slider {
+  height: auto;
+  margin-top: 0%;
+}
+.slider-image{
+  height: 700px;
+  tab-size: 60px;
+}
 .banner > h1 {
   bottom: 8px;
   right: 8px;
