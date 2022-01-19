@@ -18,7 +18,7 @@ const roomSchema = mongoose.Schema({
     type: Number,
     required: [true, 500],
   },
-  rating: {
+  ratings: {
     type: Number,
     default: 0,
   },
@@ -50,6 +50,11 @@ const roomSchema = mongoose.Schema({
   },
   reviews: [
     {
+      user: {
+        type: mongoose.Schema.ObjectId,
+        ref: "User",
+        required: true,
+      },
       name: {
         type: String,
         required: true,

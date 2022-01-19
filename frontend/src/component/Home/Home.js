@@ -1,12 +1,52 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useEffect } from "react";
 import "./Home.css";
+import Room from "./RoomCard.js";
+import MetaData from "../layout/MetaData.js";
+import { getRoom, clearErrors } from "../../actions/roomAction.js";
+import { useSelector, useDispatch } from "react-redux";
+import Loader from "../layout/Loader/Loader";
+import { useAlert } from "react-alert";
+import image1 from "../Home/images/room.png"
 
 const Home = () => {
+  const alert = useAlert();
+  const dispatch = useDispatch();
+  const { loading, error, rooms, roomsCount } = useSelector(
+    (state) => state.rooms
+  );
+
+  useEffect(() => {
+    if (error) {
+      alert.error(error);
+      dispatch(clearErrors());
+    }
+    dispatch(getRoom());
+  }, [dispatch, error, alert]);
+
   return (
     <Fragment>
-      <div className="banner"></div>
-      <h2 className="homeHeading">FEATURED PRODUCTS</h2>
-      <div className="container" id="container"></div>
+      {loading ? (
+        <Loader />
+      ) : (
+        <Fragment>
+          <MetaData title="Welcome to EasyStays.com!" />
+          <img src=""></img>
+          <div className="banner">
+            <div className="slider">
+              <div className="slider-image">
+                <img src={image1} />
+               </div>
+              <input type="radio" name="radio-btn" />
+              <input type="radio" name="radio-btn" />
+              <input type="radio" name="radio-btn" />
+            </div>
+          </div>
+          <h2 className="homeHeading">FEATURED ROOMS</h2>
+          <div className="container" id="container">
+            {rooms && rooms.map((room) => <Room room={room} />)}
+          </div>
+        </Fragment>
+      )}
     </Fragment>
   );
 };

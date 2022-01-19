@@ -14,6 +14,14 @@ body {
   color: black;
 }
 
+.slider {
+  height: auto;
+  margin-top: 0%;
+}
+.slider-image{
+  height: 700px;
+  tab-size: 60px;
+}
 .banner > h1 {
   bottom: 8px;
   right: 8px;
@@ -47,7 +55,7 @@ body {
   max-width: 100%;
 }
 
-.productCard {
+.roomCard {
   padding-top: 2vmax;
   width: 16vmax;
   display: flex;
@@ -59,32 +67,32 @@ body {
   padding-bottom: 2vmax;
 }
 
-.productCard > img {
+.roomCard > img {
   width: 15vmax;
   height: 15vmax;
   object-fit: contain;
 }
 
-.productCard > div {
+.roomCard > div {
   margin: 0.5vmax;
   display: flex;
   justify-content: flex-start;
   align-items: center;
 }
 
-.productCardSpan {
+.roomCardSpan {
   margin: 0.5vmax;
   font: 300 0.8vmax "Raleway";
 }
 
-.productCard > p {
+.roomCard > p {
   font-family: "Raleway", sans-serif;
   font-size: 1.2vmax;
   margin: 1vmax 0.5vmax;
   margin-bottom: 0;
 }
 
-.productCard > p:last-of-type {
+.roomCard > p:last-of-type {
   font-family: "Bodoni Moda", sans-serif;
   color: rgba(54, 54, 54, 0.582);
   font-size: 0.8vmax;
@@ -92,17 +100,17 @@ body {
   margin-bottom: 0;
 }
 
-.productCard > span {
+.roomCard > span {
   margin: 0.5vmax;
   color: rgb(48, 48, 48);
   font-family: "Raleway", sans-serif;
 }
 
-.productCard:hover {
+.roomCard:hover {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-.productBadgeLowStock {
+.roomBadgeLowStock {
   align-items: flex-end;
   z-index: 1;
   font-size: 0.8vmax;
@@ -121,7 +129,7 @@ body {
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.219);
 }
 
-.productBadgeNoStock {
+.roomBadgeNoStock {
   align-items: flex-end;
   z-index: 1;
   font-size: 0.8vmax;
@@ -139,7 +147,7 @@ body {
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.219);
 }
 
-.productBadgeBest {
+.roomBadgeBest {
   align-items: flex-end;
   z-index: 1;
   font-size: 0.8vmax;
@@ -157,7 +165,7 @@ body {
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.219);
 }
 
-.productNoBadge {
+.roomNoBadge {
   height: 1.5vmax;
   margin-bottom: 1vmax;
   font-size: 0;
@@ -168,20 +176,20 @@ body {
 }
 
 @media screen and (max-width: 600px) {
-  .productCard > p {
+  .roomCard > p {
     font-size: 1.7vmax;
   }
 
-  .productCard > div {
+  .roomCard > div {
     margin: 0vmax;
     display: block;
   }
 
-  .productCard > span {
+  .roomCard > span {
     font-size: 1.5vh;
   }
 
-  .productCard > div > span {
+  .roomCard > div > span {
     margin: 0 0.5vmax;
     font: 300 1vmax "Raleway";
   }
