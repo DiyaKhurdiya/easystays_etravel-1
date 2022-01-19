@@ -22,6 +22,12 @@ const roomSchema = mongoose.Schema({
     type: Number,
     default: 0,
   },
+  Stock: {
+    type: Number,
+    required: [true, "Please Enter no. of rooms available"],
+    maxLength: [3, "Number of rooms cannot exceed 4 characters"],
+    default: 1,
+  },
   images: [
     {
       public_id: {
