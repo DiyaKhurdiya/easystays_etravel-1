@@ -6,14 +6,12 @@ import { getRoom, clearErrors } from "../../actions/roomAction.js";
 import { useSelector, useDispatch } from "react-redux";
 import Loader from "../layout/Loader/Loader";
 import { useAlert } from "react-alert";
-import image1 from "../Home/images/room.png"
+import image1 from "../Home/images/room.png";
 
 const Home = () => {
   const alert = useAlert();
   const dispatch = useDispatch();
-  const { loading, error, rooms, roomsCount } = useSelector(
-    (state) => state.rooms
-  );
+  const { loading, error, rooms } = useSelector((state) => state.rooms);
 
   useEffect(() => {
     if (error) {
@@ -30,12 +28,12 @@ const Home = () => {
       ) : (
         <Fragment>
           <MetaData title="Welcome to EasyStays.com!" />
-          <img src=""></img>
+          <img src="" alt=""></img>
           <div className="banner">
             <div className="slider">
               <div className="slider-image">
-                <img src={image1} />
-               </div>
+                <img src={image1} alt="" />
+              </div>
               <input type="radio" name="radio-btn" />
               <input type="radio" name="radio-btn" />
               <input type="radio" name="radio-btn" />
