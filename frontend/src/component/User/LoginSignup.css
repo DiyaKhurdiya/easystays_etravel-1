@@ -18,7 +18,7 @@
 }
 
 .loginSignupBox {
-  background-color: #f2f1ef;
+  background-color: #f3f3f3;
   width: 30vw;
   height: 70vh;
   box-sizing: border-box;
@@ -39,8 +39,10 @@
 }
 
 .login_signup_toggle > p {
-  color: black;
-  font: 300 1vmax "Raleway";
+  color: rgb(10, 10, 10);
+  font-size: 1.2vmax;
+  font-family: "Poppins", sans-serif;
+  font-weight: 300;
   transition: all 0.4s;
   cursor: pointer;
   display: grid;
@@ -49,11 +51,11 @@
 }
 
 .login_signup_toggle > p:hover {
-  color: #bcaca4;
+  color: #8a8a8a;
 }
 
 .loginSignupBox > div > button {
-  background-color: #aca393;
+  background-color: #184599;
   height: 3px;
   width: 50%;
   border: none;
@@ -91,7 +93,7 @@
   box-sizing: border-box;
   border: 1px solid #cfcfcf;
   border-radius: 4px;
-  font: 300 0.9vmax "Raleway";
+  font: 300 0.9vmax "Oxygen";
   outline: none;
 }
 
@@ -106,7 +108,7 @@
   color: black;
   text-decoration: none;
   transition: all 0.4s;
-  font: 500 0.8vmax "Raleway";
+  font: 500 0.8vmax "Oxygen";
 }
 
 .loginForm > a:hover {
@@ -130,7 +132,7 @@
   height: 5vh;
   border: none;
   margin: 0%;
-  font: 400 0.8vmax "Raleway";
+  font: 400 0.8vmax "Oxygen";
   transition: all 0.4s;
   padding: 0 1vmax;
   color: black;
@@ -144,9 +146,9 @@
 .loginBtn,
 .signupBtn {
   border: none;
-  background-color: rgb(24, 23, 23);
-  color: #998d79;
-  font: 300 0.9vmax "Raleway";
+  background-color: #184599;
+  color: white;
+  font: 300 0.9vmax "Oxygen";
   width: 50%;
   padding: 0.8vmax;
   cursor: pointer;
@@ -157,7 +159,7 @@
 
 .loginBtn:hover,
 .signupBtn:hover {
-  background-color: rgb(68, 67, 67);
+  background-color: #4a6596;
 }
 
 .shiftToLeft {
