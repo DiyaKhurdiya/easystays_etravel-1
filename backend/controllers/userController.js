@@ -1,27 +1,33 @@
 const ErrorHandler = require("../utils/errorhandler");
 const catchAsyncErrors = require("../middleware/catchAsyncErrors");
 const User = require("../models/userModel");
-const sendToken = require("../utils/jwtToken")
-const sendEmail = require("../utils/sendEmail")
+const sendToken = require("../utils/jwtToken");
+const sendEmail = require("../utils/sendEmail");
 const crypto = require("crypto");
+const cloudinary = require("cloudinary");
 const { error } = require("console");
 
 // Register a User
 exports.registerUser = catchAsyncErrors(async (req, res, next) => {
+  const myCloud = await cloudinary.v2.uploader.upload(req.body.avatar, {
+    folder: "avatars",
+    width: 150,
+    crop: "scale",
+  });
 
-    const { name, email, password } = req.body;
-  
-    const user = await User.create({
-      name,
-      email,
-      password,
-      avatar: {
-        public_id: "sample id",
-        url: "profilePicURL",
-      },
-    });
-    
-    sendToken(user, 201, res);
+  const { name, email, password } = req.body;
+
+  const user = await User.create({
+    name,
+    email,
+    password,
+    avatar: {
+      public_id: myCloud.public_id,
+      url: myCloud.secure_url,
+    },
+  });
+
+  sendToken(user, 201, res);
 });
 
 // Login User
@@ -153,19 +159,19 @@ exports.updatePassword = catchAsyncErrors(async (req, res, next) => {
 
   const isPasswordMatched = await user.comparePassword(req.body.oldPassword);
 
-  if(!isPasswordMatched) {
-    return next(new ErrorHandler("Old password incorrect",401));
+  if (!isPasswordMatched) {
+    return next(new ErrorHandler("Old password incorrect", 401));
   }
 
-  if(req.body.newPassword !== req.body.confirmPassword) {
-    return next(new ErrorHandler("New password does not match",401));
+  if (req.body.newPassword !== req.body.confirmPassword) {
+    return next(new ErrorHandler("New password does not match", 401));
   }
 
   user.password = req.body.newPassword;
 
   await user.save();
 
-  sendToken(user,200,res);
+  sendToken(user, 200, res);
 });
 
 // Update User profile
@@ -173,16 +179,16 @@ exports.updateProfile = catchAsyncErrors(async (req, res, next) => {
   const newUserData = {
     name: req.body.name,
     email: req.body.email,
-  }
+  };
 
   const user = await User.findByIdAndUpdate(req.user.id, newUserData, {
     new: true,
     runValidators: true,
-    useFindAndModify: false
-  }); 
+    useFindAndModify: false,
+  });
 
   res.status(200).json({
-    success: true
+    success: true,
   });
 });
 
@@ -199,9 +205,11 @@ exports.getAllUsers = catchAsyncErrors(async (req, res, next) => {
 // Get single user (admin)
 exports.getSingleUser = catchAsyncErrors(async (req, res, next) => {
   const user = await User.findById(req.params.id);
- 
-  if(!user) {
-    return next(new ErrorHandler(`User does not exist with id :${req.params.id}`));
+
+  if (!user) {
+    return next(
+      new ErrorHandler(`User does not exist with id :${req.params.id}`)
+    );
   }
   res.status(200).json({
     success: true,
@@ -214,32 +222,33 @@ exports.updateUserRole = catchAsyncErrors(async (req, res, next) => {
   const newUserData = {
     name: req.body.name,
     email: req.body.email,
-    role: req.body.role
-  }
+    role: req.body.role,
+  };
 
   const user = await User.findByIdAndUpdate(req.params.id, newUserData, {
     new: true,
     runValidators: true,
-    useFindAndModify: false
-  }); 
+    useFindAndModify: false,
+  });
 
   res.status(200).json({
-    success: true
+    success: true,
   });
 });
 //Delete user
 exports.deleteUser = catchAsyncErrors(async (req, res, next) => {
-  
   const user = await User.findById(req.params.id);
 
-  if(!user) {
-    return next(new ErrorHandler(`User does not exist with id :${req.params.id}`));
+  if (!user) {
+    return next(
+      new ErrorHandler(`User does not exist with id :${req.params.id}`)
+    );
   }
 
-  await user.remove()
+  await user.remove();
 
   res.status(200).json({
     success: true,
-    message: "User deleted successfully"
+    message: "User deleted successfully",
   });
 });
