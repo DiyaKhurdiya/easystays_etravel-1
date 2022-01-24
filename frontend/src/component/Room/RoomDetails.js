@@ -49,21 +49,22 @@ const RoomDetails = ({ match }) => {
             </div>
             <div>
               <div className="detailsBlock-1">
-                <h2>{room.name}</h2>
+                <h2>{room.name}, {room.location}</h2>
+                <h3>{room.category} Type</h3>    
               </div>
               <div className="detailsBlock-2">
                 <ReactStars {...options} />
                 <span> ({room.numOfReviews} reviews)</span>
               </div>
               <div className="detailsBlock-3">
-                <h1>{`${room.price}`}</h1>
+                <h1>{` ₹ ${room.price}/ night`}</h1>
                 <div className="detailsBlock-3-1">
                   <div className="detailsBlock-3-1-1">
                     <button>-</button>
                     <input value="1" type="number" />
                     <button>+</button>
                   </div>
-                  <button>Add to cart</button>
+                  <button>Book Rooms</button>
                 </div>
 
                 <p>
@@ -74,7 +75,7 @@ const RoomDetails = ({ match }) => {
                 </p>
               </div>
               <div className="detailsBlock-4">
-                Description: <p>{room.description}</p>
+                Amenities: <p>{room.description}</p>
               </div>
               <button className="submitReview">Submit review</button>
             </div>

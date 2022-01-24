@@ -6,6 +6,8 @@ import Home from "./component/Home/Home.js";
 import Contact from "./component/Home/Contact.js";
 import RoomDetails from "./component/Room/RoomDetails.js";
 import LoginSignup from "./component/User/LoginSignup.js";
+import Rooms from "./component/Room/Rooms.js";
+
 
 function App() {
   return (
@@ -13,6 +15,7 @@ function App() {
       <Header />
       <Route exact path="/" component={Home} />
       <Route exact path="/product/:id" component={RoomDetails} />
+      <Route exact path="/rooms" component={Rooms} />
       <Route exact path="/contact" component={Contact} />
       <Route path="/login" component={LoginSignup} />
       <Footer />

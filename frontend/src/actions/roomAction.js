@@ -14,11 +14,17 @@ import {
   CLEAR_ERRORS,
 } from "../constants/roomConstants";
 
-export const getRoom = () => async (dispatch) => {
+export const getRoom = (currentPage = 1, price = [0,25000], category, ratings = 0 ) => async (dispatch) => {
   try {
     dispatch({ type: ALL_ROOM_REQUEST });
 
-    const { data } = await axios.get("/api/v1/rooms");
+    let link = (`/api/v1/rooms?page=${currentPage}&price[gte]=${price[0]}&price[lte]=${price[1]}&ratings[gte]=${ratings}`);
+
+    if (category) {
+      link = `/api/v1/products?page=${currentPage}&price[gte]=${price[0]}&price[lte]=${price[1]}&category=${category}&ratings[gte]=${ratings}`;
+    }
+
+    const { data } = await axios.get(link);
 
     dispatch({
       type: ALL_ROOM_SUCCESS,

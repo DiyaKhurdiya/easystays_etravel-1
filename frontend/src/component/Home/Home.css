@@ -56,8 +56,8 @@ body {
 }
 
 .roomCard {
-  padding-top: 2vmax;
-  width: 16vmax;
+  padding-top: 8vmax;
+  width: 20vmax;
   display: flex;
   flex-direction: column;
   text-decoration: none;
@@ -68,9 +68,10 @@ body {
 }
 
 .roomCard > img {
-  width: 15vmax;
-  height: 15vmax;
-  object-fit: contain;
+  width: 20vmax;
+  height: 12vmax;
+  object-fit:cover;
+  align-items: center;
 }
 
 .roomCard > div {
@@ -81,33 +82,39 @@ body {
 }
 
 .roomCardSpan {
-  margin: 0.5vmax;
+  margin: 1vmax;
   font: 300 0.8vmax "Raleway";
 }
 
 .roomCard > p {
   font-family: "Raleway", sans-serif;
-  font-size: 1.2vmax;
-  margin: 1vmax 0.5vmax;
+  font-size: 1.5vmax;
+  margin: 1vmax .5vmax;
   margin-bottom: 0;
 }
 
-.roomCard > p:last-of-type {
+.roomCard > p:last-of-type{
   font-family: "Bodoni Moda", sans-serif;
   color: rgba(54, 54, 54, 0.582);
-  font-size: 0.8vmax;
-  margin: 0.5vmax 0.5vmax;
+  font-size: 1.1vmax;
+  margin: 1.2vmax 0.3vmax;
   margin-bottom: 0;
 }
 
+.category {
+  font-family: "Bodoni Moda", sans-serif;
+  font-size: 1vmax;
+
+}
 .roomCard > span {
-  margin: 0.5vmax;
+  margin: .5vmax;
+  font-size: 1.2vmax;
   color: rgb(48, 48, 48);
   font-family: "Raleway", sans-serif;
 }
 
 .roomCard:hover {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 6px 0 rgba(0, 0, 0, 0.19);
 }
 
 .roomBadgeLowStock {
