@@ -13,7 +13,7 @@ const Header = () => {
         <a href="\" className="category">
           Home
         </a>
-        <a href="\hotels" className="category">
+        <a href="\rooms" className="category">
           Hotels
         </a>
         <a href="\locations" className="category">
